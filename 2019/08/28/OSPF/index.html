@@ -95,14 +95,14 @@
 <h6 id="2-1-了解路由汇总的目的"><a href="#2-1-了解路由汇总的目的" class="headerlink" title="2.1 了解路由汇总的目的"></a>2.1 了解路由汇总的目的</h6><ol>
 <li>区域间路由汇总必须在ABR上完成</li>
 <li>外部路由汇总必须在ASBR上完成  </li>
-<li>“no-advertise”参数阻止传递汇总路由<h6 id="2-2-OSPF区域间路由汇总的配置和调试"><a href="#2-2-OSPF区域间路由汇总的配置和调试" class="headerlink" title="2.2 OSPF区域间路由汇总的配置和调试"></a>2.2 OSPF区域间路由汇总的配置和调试</h6><blockquote>
+<li>“no-advertise”参数阻止传递汇总路由</li>
+</ol>
+<h6 id="2-2-OSPF区域间路由汇总的配置和调试"><a href="#2-2-OSPF区域间路由汇总的配置和调试" class="headerlink" title="2.2 OSPF区域间路由汇总的配置和调试"></a>2.2 OSPF区域间路由汇总的配置和调试</h6><blockquote>
 <p>R2(config)#router ospf 1<br>R2(config-router)#area 1 range 172.16.0.0 255.255.252.0<br><img src="http://wx1.sinaimg.cn/large/647ba45dgy1g6fe0pnix2j20he03dmx5.jpg" alt><br>R3(config)#router ospf 1<br>R3(config-router)#redistribute eigrp 10 subnets //eigrp路由重分<br><img src="http://wx1.sinaimg.cn/large/647ba45dgy1g6fe0pntl2j20mo0ao74u.jpg" alt>  </p>
 </blockquote>
 <h6 id="2-3-外部自治系统路由汇总的配置和调试"><a href="#2-3-外部自治系统路由汇总的配置和调试" class="headerlink" title="2.3 外部自治系统路由汇总的配置和调试"></a>2.3 外部自治系统路由汇总的配置和调试</h6><blockquote>
 <p>R3(config)#router ospf 1<br>R3(config-router)#summary-address 192.168.0.0  255.255.252.0 //手动汇总  </p>
 </blockquote>
-</li>
-</ol>
 <blockquote>
 <p>R2(config)#router ospf 1<br>R2(config-router)#no discard-route<br><img src="http://wx2.sinaimg.cn/large/647ba45dgy1g6fe0plnljj20le0413yk.jpg" alt>  </p>
 </blockquote>

@@ -34,11 +34,12 @@
 <li>OSPF接口优先级为0。</li>
 </ul>
 </li>
-<li>如果DR故障，BDR接管DR，如果BDR故障，选新的BDR<h4 id="2、最短路径优先"><a href="#2、最短路径优先" class="headerlink" title="2、最短路径优先"></a>2、最短路径优先</h4> Cost=108/BW（b/s)<br>metric值=所有目的地址到达本地路由器的入接口的cost值之和<br>metric值=所有本地路由器到达目的地址的路由器的出接口的cost值之和<br>也可以使用命令*<em>sh ip ospf interface loopback 0 *</em>查看接口的cost值   <h2 id="四、OSPF路由协议配置实验"><a href="#四、OSPF路由协议配置实验" class="headerlink" title="四、OSPF路由协议配置实验"></a>四、OSPF路由协议配置实验</h2><h4 id="1、ospf配置"><a href="#1、ospf配置" class="headerlink" title="1、ospf配置"></a>1、ospf配置</h4><img src="http://wx2.sinaimg.cn/large/647ba45dgy1g6fe0pnkurj20hq07qdgb.jpg" alt>  <h6 id="1-1-如图运行OSPF区域"><a href="#1-1-如图运行OSPF区域" class="headerlink" title="1.1 如图运行OSPF区域"></a>1.1 如图运行OSPF区域</h6><blockquote>
+<li>如果DR故障，BDR接管DR，如果BDR故障，选新的BDR<h4 id="2、最短路径优先"><a href="#2、最短路径优先" class="headerlink" title="2、最短路径优先"></a>2、最短路径优先</h4> Cost=108/BW（b/s)<br>metric值=所有目的地址到达本地路由器的入接口的cost值之和<br>metric值=所有本地路由器到达目的地址的路由器的出接口的cost值之和<br>也可以使用命令*<em>sh ip ospf interface loopback 0 *</em>查看接口的cost值   </li>
+</ol>
+<h2 id="四、OSPF路由协议配置实验"><a href="#四、OSPF路由协议配置实验" class="headerlink" title="四、OSPF路由协议配置实验"></a>四、OSPF路由协议配置实验</h2><h4 id="1、ospf配置"><a href="#1、ospf配置" class="headerlink" title="1、ospf配置"></a>1、ospf配置</h4><p><img src="http://wx2.sinaimg.cn/large/647ba45dgy1g6fe0pnkurj20hq07qdgb.jpg" alt>  </p>
+<h6 id="1-1-如图运行OSPF区域"><a href="#1-1-如图运行OSPF区域" class="headerlink" title="1.1 如图运行OSPF区域"></a>1.1 如图运行OSPF区域</h6><blockquote>
 <p>R1(config)#int loopback 0<br>R1(config-if)#ip address 11.1.1.1 255.255.255.0<br>R1(config)#int f0/0<br>R1(config-if)#ip address 100.1.1.1 255.255.255.0<br>R1(config-if)#no shutdown  </p>
 </blockquote>
-</li>
-</ol>
 <blockquote>
 <p>R2(config)#int f0/0<br>R2(config-if)#ip address 100.1.1.2 255.255.255.0<br>R2(config-if)#no shutdown<br>R2(config)#int s0/0<br>R2(config-if)#ip address 24.1.1.1 255.255.255.0<br>R2(config-if)#no shutdown  </p>
 </blockquote>

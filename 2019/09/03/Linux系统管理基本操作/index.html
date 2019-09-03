@@ -12,15 +12,21 @@ cd 返回家目录</code></pre><h2 id="二、常用的shell命令介绍"><a href
 </blockquote>
 <h4 id="2-2-创建目录：mkdir–要考虑-权限问题"><a href="#2-2-创建目录：mkdir–要考虑-权限问题" class="headerlink" title="2.2 创建目录：mkdir–要考虑 权限问题"></a>2.2 创建目录：mkdir–要考虑 权限问题</h4><ul>
 <li>-p 创建连续目录<br><code>[root@localhost /]:#mkdir - p /media/cdrom</code></li>
-<li>-m 创建目录同时设置权限<br><code>[root@localhost /]:#mkdir - m 775 test</code>  <h4 id="2-3-删除目录：rmdir"><a href="#2-3-删除目录：rmdir" class="headerlink" title="2.3 删除目录：rmdir"></a>2.3 删除目录：rmdir</h4></li>
-<li>-p 删除连续目录<h4 id="2-4-删除文件：rm–默认只删除文件，不删除目录"><a href="#2-4-删除文件：rm–默认只删除文件，不删除目录" class="headerlink" title="2.4 删除文件：rm–默认只删除文件，不删除目录"></a>2.4 删除文件：rm–默认只删除文件，不删除目录</h4></li>
-<li>-f 无提示，直接删除<h4 id="2-5-复制文件或目录：cp"><a href="#2-5-复制文件或目录：cp" class="headerlink" title="2.5 复制文件或目录：cp"></a>2.5 复制文件或目录：cp</h4><blockquote>
+<li>-m 创建目录同时设置权限<br><code>[root@localhost /]:#mkdir - m 775 test</code>  </li>
+</ul>
+<h4 id="2-3-删除目录：rmdir"><a href="#2-3-删除目录：rmdir" class="headerlink" title="2.3 删除目录：rmdir"></a>2.3 删除目录：rmdir</h4><ul>
+<li>-p 删除连续目录</li>
+</ul>
+<h4 id="2-4-删除文件：rm–默认只删除文件，不删除目录"><a href="#2-4-删除文件：rm–默认只删除文件，不删除目录" class="headerlink" title="2.4 删除文件：rm–默认只删除文件，不删除目录"></a>2.4 删除文件：rm–默认只删除文件，不删除目录</h4><ul>
+<li>-f 无提示，直接删除</li>
+</ul>
+<h4 id="2-5-复制文件或目录：cp"><a href="#2-5-复制文件或目录：cp" class="headerlink" title="2.5 复制文件或目录：cp"></a>2.5 复制文件或目录：cp</h4><blockquote>
 <p>复制文件<br><code>[root@localhost ~]# cp /bin/touch /root/test/toch1</code><br><code>[root@localhost ~]# cp /etc/inittab /etc/inittab.bat  将文件进行备份</code><br>复制目录<br><code>[root@localhost ~]# cp –R /tmp /root/mnt</code></p>
 </blockquote>
-<h4 id="2-6-移动-剪切文件或目录：mv"><a href="#2-6-移动-剪切文件或目录：mv" class="headerlink" title="2.6 移动/剪切文件或目录：mv"></a>2.6 移动/剪切文件或目录：mv</h4>重命名：<br><code>[root@localhost ~]# mv /root/test/test1.txt /root/test/test2.txt</code>  <h4 id="2-7-新建文件：touch"><a href="#2-7-新建文件：touch" class="headerlink" title="2.7 新建文件：touch"></a>2.7 新建文件：touch</h4><h2 id="三、查看文件内容命令"><a href="#三、查看文件内容命令" class="headerlink" title="三、查看文件内容命令"></a>三、查看文件内容命令</h2><h4 id="3-1-显示文件内容：cat"><a href="#3-1-显示文件内容：cat" class="headerlink" title="3.1 显示文件内容：cat"></a>3.1 显示文件内容：cat</h4></li>
-<li>n 显示行号<h4 id="3-2-分页显示文件内容：more-less"><a href="#3-2-分页显示文件内容：more-less" class="headerlink" title="3.2 分页显示文件内容：more/less"></a>3.2 分页显示文件内容：more/less</h4><h4 id="3-3-查看文件开头或末尾的部分：head-tail"><a href="#3-3-查看文件开头或末尾的部分：head-tail" class="headerlink" title="3.3 查看文件开头或末尾的部分：head/tail"></a>3.3 查看文件开头或末尾的部分：head/tail</h4>默认显示10行内容<br>直接用-#（#代表任何数字）来改变显示行数<h4 id="3-4-文件内容统计：wc"><a href="#3-4-文件内容统计：wc" class="headerlink" title="3.4 文件内容统计：wc"></a>3.4 文件内容统计：wc</h4>作用：用于统计指定文件中的行数、单词数、字节数。<br>语法：wc(选项)(参数)<br>常用选项：  </li>
-</ul>
-<p><strong>-l 统计行数<br>-w 统计单词数<br>-c 统计字节数</strong></p>
+<h4 id="2-6-移动-剪切文件或目录：mv"><a href="#2-6-移动-剪切文件或目录：mv" class="headerlink" title="2.6 移动/剪切文件或目录：mv"></a>2.6 移动/剪切文件或目录：mv</h4><p>重命名：<br><code>[root@localhost ~]# mv /root/test/test1.txt /root/test/test2.txt</code>  </p>
+<h4 id="2-7-新建文件：touch"><a href="#2-7-新建文件：touch" class="headerlink" title="2.7 新建文件：touch"></a>2.7 新建文件：touch</h4><h2 id="三、查看文件内容命令"><a href="#三、查看文件内容命令" class="headerlink" title="三、查看文件内容命令"></a>三、查看文件内容命令</h2><h4 id="3-1-显示文件内容：cat"><a href="#3-1-显示文件内容：cat" class="headerlink" title="3.1 显示文件内容：cat"></a>3.1 显示文件内容：cat</h4><p>-n 显示行号</p>
+<h4 id="3-2-分页显示文件内容：more-less"><a href="#3-2-分页显示文件内容：more-less" class="headerlink" title="3.2 分页显示文件内容：more/less"></a>3.2 分页显示文件内容：more/less</h4><h4 id="3-3-查看文件开头或末尾的部分：head-tail"><a href="#3-3-查看文件开头或末尾的部分：head-tail" class="headerlink" title="3.3 查看文件开头或末尾的部分：head/tail"></a>3.3 查看文件开头或末尾的部分：head/tail</h4><p>默认显示10行内容<br>直接用-#（#代表任何数字）来改变显示行数</p>
+<h4 id="3-4-文件内容统计：wc"><a href="#3-4-文件内容统计：wc" class="headerlink" title="3.4 文件内容统计：wc"></a>3.4 文件内容统计：wc</h4><p>作用：用于统计指定文件中的行数、单词数、字节数。<br>语法：wc(选项)(参数)<br>常用选项：<br><strong>-l 统计行数<br>-w 统计单词数<br>-c 统计字节数</strong></p>
 <h2 id="四、查找命令"><a href="#四、查找命令" class="headerlink" title="四、查找命令"></a>四、查找命令</h2><h4 id="4-1-搜索文件与目录：find"><a href="#4-1-搜索文件与目录：find" class="headerlink" title="4.1 搜索文件与目录：find"></a>4.1 搜索文件与目录：find</h4><p>作用：是在某个指定的路径下找我们需要的文件或目录，目标是文件或目录。 类似于在 Windows 系统中执行的“搜索”操作。<br>语法：<em>find [查找范围] [查找条件表达式]</em><br>常用选项：<br><strong>-name</strong> 按名称查找，允许使用通配符。<br><strong>-type</strong> 按文件类型查找文件类型包括： 普通文件（f）、目录（d）、块设备 文件（b）、字符设备文件（c）<br><strong>-user</strong> 按文件所有者查找，根据文件是否属于某个目标用户进行查找。<br><strong>-size</strong> 按文件大小查找，使用“+”、“-”号设置超过或小于指定的大小 作为查找条件。常用的容量单位包括 k（注意是小写）、M、G  </p>
 <blockquote>
 <p>eg:<br><code>#find /etc -size +1024k -name &quot;init*&quot;</code><br><code>#find /etc -name 1.txt</code>  </p>

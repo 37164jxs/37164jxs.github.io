@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>用户与组的管理 | 隔壁抄手店</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">用户与组的管理</h1><a id="logo" href="/.">隔壁抄手店</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">用户与组的管理</h1><div class="post-meta"><a href="/2019/09/04/用户与组的管理/#comments" class="comment-count"></a><p><span class="date">Sep 04, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h2 id="一、用户与用户组概念"><a href="#一、用户与用户组概念" class="headerlink" title="一、用户与用户组概念"></a>一、用户与用户组概念</h2><h4 id="1-1-用户与用户组概念"><a href="#1-1-用户与用户组概念" class="headerlink" title="1.1 用户与用户组概念"></a>1.1 用户与用户组概念</h4><p>Linux是一个多用户、多任务的服务器操作系统。Linux 用户是根据角色定义的，具体分为三种角色：<br><strong>超级用户</strong>：拥有对系统的最高管理权限，默认是 root 用户。<br><strong>普通用户</strong>：只能对自己目录下的文件进行访问和修改，具有登录系统的权限。<br><strong>虚拟用户</strong>：也叫“伪”用户，这类用户最大的特点是不能登录系统，它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。<br><strong>主要组（主组）</strong>：每个用户有且只有一个主要组，创建用户时默认创建。<br><strong>附属组（补充组）</strong>：用户可以是零个或多个附属组成员。一般用于帮助确保用户具有对系统中文件及其他资源的访问权限。</p>
+<h4 id="1-2-用户配置文件"><a href="#1-2-用户配置文件" class="headerlink" title="1.2 用户配置文件"></a>1.2 用户配置文件</h4><h6 id="1-2-1-用户配置文件：-etc-passwd"><a href="#1-2-1-用户配置文件：-etc-passwd" class="headerlink" title="1.2.1 用户配置文件：/etc/passwd"></a>1.2.1 用户配置文件：/etc/passwd</h6><p>在passwd 配置文件中，从左到右各个字段的含义如下：  </p>
+<ul>
+<li><p><strong>用户名</strong>：用户登录系统时使用的用户名。<br>口令：存放加密的口令，被/etc/shadow 文件保护。  </p>
+</li>
+<li><p><strong>用户标识号(UID)</strong>：系统内部用它来标识用户，每个用户的UID 都是唯一的。  </p>
+</li>
+<li><p><strong>用户组标识号(GID)</strong>：系统内部用它来标识用户所属的组，这里的GID 是主组GID。 </p>
+</li>
+<li><p><strong>注释性描述</strong>：为了方便管理和记忆该用户而添加的信息。用户主目录：也称家目录，用户登录系统后所进入的目录。  </p>
+</li>
+<li><p><strong>命令解释器</strong>：指示该用户使用的 Shell，CentOS Linux 7 默认的是 bash。如果指定 Shell 为/sbin/nologin，则代表用户无法登录系统。  </p>
+<h6 id="1-2-2-用户密码配置文件：-etc-shadow"><a href="#1-2-2-用户密码配置文件：-etc-shadow" class="headerlink" title="1.2.2 用户密码配置文件：/etc/shadow"></a>1.2.2 用户密码配置文件：/etc/shadow</h6></li>
+<li><p><strong>用户名</strong>：用户账户名。 </p>
+</li>
+<li><p><strong>密码</strong>：用户的加密密码。 </p>
+</li>
+<li><p><strong>最后一次修改的时间</strong>：从1970年1月1日起，到用户最后一次更改密码的天数。最小时间间隔：从1970年1月1日起，到用户可以更改密码的天数，(0表示随时可以变更)。 </p>
+</li>
+<li><p><strong>最大时间间隔</strong>：从1970年1月1日起，到必须更改密码的天数，否则密码将过期，(99999 表示永远不过期)。 </p>
+</li>
+<li><p><strong>警告时间</strong>：在密码过期之前多少天提醒用户更新，默认值是7 天。 </p>
+</li>
+<li><p><strong>不活动时间</strong>：在用户密码过期之后到禁用账户的天数。</p>
+</li>
+<li><p><strong>失效时间</strong>：从1970年1月1日起，到账户被禁用的天数。</p>
+</li>
+<li><p><strong>标志</strong>：保留位。</p>
+</li>
+</ul>
+<h4 id="1-3-用户组配置文件"><a href="#1-3-用户组配置文件" class="headerlink" title="1.3 用户组配置文件"></a>1.3 用户组配置文件</h4><h6 id="1-3-1-用户组配置文件-etc-group"><a href="#1-3-1-用户组配置文件-etc-group" class="headerlink" title="1.3.1 用户组配置文件/etc/group"></a>1.3.1 用户组配置文件/etc/group</h6><p>文件中各字段的含义从左到右分别是：</p>
+<ul>
+<li><strong>组名</strong>：组的名称。</li>
+<li><strong>组口令</strong>：用户组的口令，用x表示口令是被/etc/gshadow文件保护的。</li>
+<li><strong>组标识号(GID)</strong>：系统内部用它来标识用户组，每个用户组的 GID 都是唯一的。</li>
+<li><strong>组成员</strong>：该组的成员。 </li>
+</ul>
+<h6 id="1-3-2-用户组密码配置文件-etc-gshadow"><a href="#1-3-2-用户组密码配置文件-etc-gshadow" class="headerlink" title="1.3.2 用户组密码配置文件/etc/gshadow"></a>1.3.2 用户组密码配置文件/etc/gshadow</h6><p>文件中各字段的含义从左到右分别是：  </p>
+<ul>
+<li><strong>组名</strong>：组的名称。</li>
+<li><strong>组口令</strong>：用户组的口令，保存已加密的口令。</li>
+<li><strong>组的管理员帐号</strong>：组的管理员帐号，管理员有权对该组添加、删除帐号。</li>
+<li><strong>组成员</strong>：该组的成员，多个用户用“，”分开。<h4 id="1-4-用户管理"><a href="#1-4-用户管理" class="headerlink" title="1.4 用户管理"></a>1.4 用户管理</h4><h6 id="1-4-1-创建用户：useradd"><a href="#1-4-1-创建用户：useradd" class="headerlink" title="1.4.1 创建用户：useradd"></a>1.4.1 创建用户：useradd</h6><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-g</td>
+<td>指定用户组</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>若主目录不存在，则创建</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>指定登录时用的shell类型，默认/bin/bash，/sbin/nologin是虚拟用户</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>写注释</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>创建系统账号</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>指定UID值&gt;999</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>[root@localhost ~]# id bobo<br>uid=1017(bobo) gid=1021(bobo) 组=1021(bobo),1022(teacher)  </p>
+<p>[root@localhost ~]# su yanyan  </p>
+</div><div class="post-copyright"><blockquote><p>原文作者: Lvy_Sim</p><p>原文链接: <a href="http://yoursite.com/2019/09/04/用户与组的管理/">http://yoursite.com/2019/09/04/用户与组的管理/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/09/03/Linux系统管理基本操作/" class="next">Linux系统管理基本操作</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、用户与用户组概念"><span class="toc-text">一、用户与用户组概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-用户与用户组概念"><span class="toc-text">1.1 用户与用户组概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-用户配置文件"><span class="toc-text">1.2 用户配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-1-用户配置文件：-etc-passwd"><span class="toc-text">1.2.1 用户配置文件：/etc/passwd</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-2-用户密码配置文件：-etc-shadow"><span class="toc-text">1.2.2 用户密码配置文件：/etc/shadow</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-用户组配置文件"><span class="toc-text">1.3 用户组配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-3-1-用户组配置文件-etc-group"><span class="toc-text">1.3.1 用户组配置文件/etc/group</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-3-2-用户组密码配置文件-etc-gshadow"><span class="toc-text">1.3.2 用户组密码配置文件/etc/gshadow</span></a></li></ol></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-用户管理"><span class="toc-text">1.4 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-4-1-创建用户：useradd"><span class="toc-text">1.4.1 创建用户：useradd</span></a></li></ol></li></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/用户与组的管理/">用户与组的管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/Linux系统管理基本操作/">Linux系统管理基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/EIGRP/">EIGRP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/安全设备和防火墙设置/">安全设备和防火墙设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/VPN_GRE和PPTP/">VPN_GRE和PPTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/QoS配置实例/">QoS配置实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/NAT和PPP/">NAT和PPP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/OSPF/">OSPF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/路由重分布和策略路由/">路由重分布和策略路由</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Lvy_Sim.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>

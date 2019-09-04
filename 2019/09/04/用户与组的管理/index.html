@@ -1,48 +1,37 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>用户与组的管理 | 隔壁抄手店</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">用户与组的管理</h1><a id="logo" href="/.">隔壁抄手店</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">用户与组的管理</h1><div class="post-meta"><a href="/2019/09/04/用户与组的管理/#comments" class="comment-count"></a><p><span class="date">Sep 04, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h2 id="一、用户与用户组概念"><a href="#一、用户与用户组概念" class="headerlink" title="一、用户与用户组概念"></a>一、用户与用户组概念</h2><h4 id="1-1-用户与用户组概念"><a href="#1-1-用户与用户组概念" class="headerlink" title="1.1 用户与用户组概念"></a>1.1 用户与用户组概念</h4><p>Linux是一个多用户、多任务的服务器操作系统。Linux 用户是根据角色定义的，具体分为三种角色：<br><strong>超级用户</strong>：拥有对系统的最高管理权限，默认是 root 用户。<br><strong>普通用户</strong>：只能对自己目录下的文件进行访问和修改，具有登录系统的权限。  </p>
-<a id="more"></a>  
-<p><strong>虚拟用户</strong>：也叫“伪”用户，这类用户最大的特点是不能登录系统，它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。<br><strong>主要组（主组）</strong>：每个用户有且只有一个主要组，创建用户时默认创建。<br><strong>附属组（补充组）</strong>：用户可以是零个或多个附属组成员。一般用于帮助确保用户具有对系统中文件及其他资源的访问权限。</p>
-<h4 id="1-2-用户配置文件"><a href="#1-2-用户配置文件" class="headerlink" title="1.2 用户配置文件"></a>1.2 用户配置文件</h4><h6 id="1-2-1-用户配置文件：-etc-passwd"><a href="#1-2-1-用户配置文件：-etc-passwd" class="headerlink" title="1.2.1 用户配置文件：/etc/passwd"></a>1.2.1 用户配置文件：/etc/passwd</h6><p>在passwd 配置文件中，从左到右各个字段的含义如下：  </p>
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>用户与组的管理 | 隔壁抄手店</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">用户与组的管理</h1><a id="logo" href="/.">隔壁抄手店</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">用户与组的管理</h1><div class="post-meta"><a href="/2019/09/04/用户与组的管理/#comments" class="comment-count"></a><p><span class="date">Sep 04, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h2 id="一、用户与用户组概念"><a href="#一、用户与用户组概念" class="headerlink" title="一、用户与用户组概念"></a>一、用户与用户组概念</h2><p>Linux是一个多用户、多任务的服务器操作系统。Linux 用户是根据角色定义的，具体分为三种角色：<br><strong>超级用户</strong>：拥有对系统的最高管理权限，默认是 root 用户。<br><strong>普通用户</strong>：只能对自己目录下的文件进行访问和修改，具有登录系统的权限。  <a id="more"></a><br><strong>虚拟用户</strong>：也叫“伪”用户，这类用户最大的特点是不能登录系统，它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。<br><strong>主要组（主组）</strong>：每个用户有且只有一个主要组，创建用户时默认创建。<br><strong>附属组（补充组）</strong>：用户可以是零个或多个附属组成员。一般用于帮助确保用户具有对系统中文件及其他资源的访问权限。</p>
+<h2 id="二、用户配置文件"><a href="#二、用户配置文件" class="headerlink" title="二、用户配置文件"></a>二、用户配置文件</h2><h4 id="2-1-用户配置文件：-etc-passwd"><a href="#2-1-用户配置文件：-etc-passwd" class="headerlink" title="2.1 用户配置文件：/etc/passwd"></a>2.1 用户配置文件：/etc/passwd</h4><p>在passwd 配置文件中，从左到右各个字段的含义如下：  </p>
 <ul>
-<li><p><strong>用户名</strong>：用户登录系统时使用的用户名。<br>口令：存放加密的口令，被/etc/shadow 文件保护。  </p>
-</li>
-<li><p><strong>用户标识号(UID)</strong>：系统内部用它来标识用户，每个用户的UID 都是唯一的。  </p>
-</li>
-<li><p><strong>用户组标识号(GID)</strong>：系统内部用它来标识用户所属的组，这里的GID 是主组GID。 </p>
-</li>
-<li><p><strong>注释性描述</strong>：为了方便管理和记忆该用户而添加的信息。用户主目录：也称家目录，用户登录系统后所进入的目录。  </p>
-</li>
-<li><p><strong>命令解释器</strong>：指示该用户使用的 Shell，CentOS Linux 7 默认的是 bash。如果指定 Shell 为/sbin/nologin，则代表用户无法登录系统。  </p>
-<h6 id="1-2-2-用户密码配置文件：-etc-shadow"><a href="#1-2-2-用户密码配置文件：-etc-shadow" class="headerlink" title="1.2.2 用户密码配置文件：/etc/shadow"></a>1.2.2 用户密码配置文件：/etc/shadow</h6></li>
-<li><p><strong>用户名</strong>：用户账户名。 </p>
-</li>
-<li><p><strong>密码</strong>：用户的加密密码。 </p>
-</li>
-<li><p><strong>最后一次修改的时间</strong>：从1970年1月1日起，到用户最后一次更改密码的天数。最小时间间隔：从1970年1月1日起，到用户可以更改密码的天数，(0表示随时可以变更)。 </p>
-</li>
-<li><p><strong>最大时间间隔</strong>：从1970年1月1日起，到必须更改密码的天数，否则密码将过期，(99999 表示永远不过期)。 </p>
-</li>
-<li><p><strong>警告时间</strong>：在密码过期之前多少天提醒用户更新，默认值是7 天。 </p>
-</li>
-<li><p><strong>不活动时间</strong>：在用户密码过期之后到禁用账户的天数。</p>
-</li>
-<li><p><strong>失效时间</strong>：从1970年1月1日起，到账户被禁用的天数。</p>
-</li>
-<li><p><strong>标志</strong>：保留位。</p>
-</li>
+<li><strong>用户名</strong>：用户登录系统时使用的用户名。<br>口令：存放加密的口令，被/etc/shadow 文件保护。  </li>
+<li><strong>用户标识号(UID)</strong>：系统内部用它来标识用户，每个用户的UID 都是唯一的。  </li>
+<li><strong>用户组标识号(GID)</strong>：系统内部用它来标识用户所属的组，这里的GID 是主组GID。 </li>
+<li><strong>注释性描述</strong>：为了方便管理和记忆该用户而添加的信息。用户主目录：也称家目录，用户登录系统后所进入的目录。  </li>
+<li><strong>命令解释器</strong>：指示该用户使用的 Shell，CentOS Linux 7 默认的是 bash。如果指定 Shell 为/sbin/nologin，则代表用户无法登录系统。  </li>
 </ul>
-<h4 id="1-3-用户组配置文件"><a href="#1-3-用户组配置文件" class="headerlink" title="1.3 用户组配置文件"></a>1.3 用户组配置文件</h4><h6 id="1-3-1-用户组配置文件-etc-group"><a href="#1-3-1-用户组配置文件-etc-group" class="headerlink" title="1.3.1 用户组配置文件/etc/group"></a>1.3.1 用户组配置文件/etc/group</h6><p>文件中各字段的含义从左到右分别是：</p>
+<h4 id="2-2-用户密码配置文件：-etc-shadow"><a href="#2-2-用户密码配置文件：-etc-shadow" class="headerlink" title="2.2 用户密码配置文件：/etc/shadow"></a>2.2 用户密码配置文件：/etc/shadow</h4><ul>
+<li><strong>用户名</strong>：用户账户名。 </li>
+<li><strong>密码</strong>：用户的加密密码。 </li>
+<li><strong>最后一次修改的时间</strong>：从1970年1月1日起，到用户最后一次更改密码的天数。最小时间间隔：从1970年1月1日起，到用户可以更改密码的天数，(0表示随时可以变更)。 </li>
+<li><strong>最大时间间隔</strong>：从1970年1月1日起，到必须更改密码的天数，否则密码将过期，(99999 表示永远不过期)。 </li>
+<li><strong>警告时间</strong>：在密码过期之前多少天提醒用户更新，默认值是7 天。 </li>
+<li><strong>不活动时间</strong>：在用户密码过期之后到禁用账户的天数。</li>
+<li><strong>失效时间</strong>：从1970年1月1日起，到账户被禁用的天数。</li>
+<li><strong>标志</strong>：保留位。</li>
+</ul>
+<h2 id="三、用户组配置文件"><a href="#三、用户组配置文件" class="headerlink" title="三、用户组配置文件"></a>三、用户组配置文件</h2><h4 id="3-1-用户组配置文件-etc-group"><a href="#3-1-用户组配置文件-etc-group" class="headerlink" title="3.1 用户组配置文件/etc/group"></a>3.1 用户组配置文件/etc/group</h4><p>文件中各字段的含义从左到右分别是：</p>
 <ul>
 <li><strong>组名</strong>：组的名称。</li>
 <li><strong>组口令</strong>：用户组的口令，用x表示口令是被/etc/gshadow文件保护的。</li>
 <li><strong>组标识号(GID)</strong>：系统内部用它来标识用户组，每个用户组的 GID 都是唯一的。</li>
 <li><strong>组成员</strong>：该组的成员。 </li>
 </ul>
-<h6 id="1-3-2-用户组密码配置文件-etc-gshadow"><a href="#1-3-2-用户组密码配置文件-etc-gshadow" class="headerlink" title="1.3.2 用户组密码配置文件/etc/gshadow"></a>1.3.2 用户组密码配置文件/etc/gshadow</h6><p>文件中各字段的含义从左到右分别是：  </p>
+<h4 id="3-2-用户组密码配置文件-etc-gshadow"><a href="#3-2-用户组密码配置文件-etc-gshadow" class="headerlink" title="3.2 用户组密码配置文件/etc/gshadow"></a>3.2 用户组密码配置文件/etc/gshadow</h4><p>文件中各字段的含义从左到右分别是：  </p>
 <ul>
 <li><strong>组名</strong>：组的名称。</li>
 <li><strong>组口令</strong>：用户组的口令，保存已加密的口令。</li>
 <li><strong>组的管理员帐号</strong>：组的管理员帐号，管理员有权对该组添加、删除帐号。</li>
-<li><strong>组成员</strong>：该组的成员，多个用户用“，”分开。<h4 id="1-4-用户管理"><a href="#1-4-用户管理" class="headerlink" title="1.4 用户管理"></a>1.4 用户管理</h4><h6 id="1-4-1-创建用户：useradd"><a href="#1-4-1-创建用户：useradd" class="headerlink" title="1.4.1 创建用户：useradd"></a>1.4.1 创建用户：useradd</h6><table>
+<li><strong>组成员</strong>：该组的成员，多个用户用“，”分开。</li>
+</ul>
+<h2 id="四、用户管理"><a href="#四、用户管理" class="headerlink" title="四、用户管理"></a>四、用户管理</h2><h4 id="4-1-创建用户：useradd"><a href="#4-1-创建用户：useradd" class="headerlink" title="4.1 创建用户：useradd"></a>4.1 创建用户：useradd</h4><table>
 <thead>
 <tr>
 <th>选项</th>
@@ -73,7 +62,176 @@
 <td>-u</td>
 <td>指定UID值&gt;999</td>
 </tr>
+<tr>
+<td><strong>#useradd stu1 表示：</strong></td>
+<td></td>
+</tr>
 </tbody></table>
-</li>
-</ul>
-</div><div class="post-copyright"><blockquote><p>原文作者: Lvy_Sim</p><p>原文链接: <a href="http://yoursite.com/2019/09/04/用户与组的管理/">http://yoursite.com/2019/09/04/用户与组的管理/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/09/03/Linux系统管理基本操作/" class="next">Linux系统管理基本操作</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、用户与用户组概念"><span class="toc-text">一、用户与用户组概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-用户与用户组概念"><span class="toc-text">1.1 用户与用户组概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-用户配置文件"><span class="toc-text">1.2 用户配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-1-用户配置文件：-etc-passwd"><span class="toc-text">1.2.1 用户配置文件：/etc/passwd</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-2-用户密码配置文件：-etc-shadow"><span class="toc-text">1.2.2 用户密码配置文件：/etc/shadow</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-用户组配置文件"><span class="toc-text">1.3 用户组配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-3-1-用户组配置文件-etc-group"><span class="toc-text">1.3.1 用户组配置文件/etc/group</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-3-2-用户组密码配置文件-etc-gshadow"><span class="toc-text">1.3.2 用户组密码配置文件/etc/gshadow</span></a></li></ol></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-用户管理"><span class="toc-text">1.4 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-4-1-创建用户：useradd"><span class="toc-text">1.4.1 创建用户：useradd</span></a></li></ol></li></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/用户与组的管理/">用户与组的管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/Linux系统管理基本操作/">Linux系统管理基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/EIGRP/">EIGRP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/安全设备和防火墙设置/">安全设备和防火墙设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/VPN_GRE和PPTP/">VPN_GRE和PPTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/QoS配置实例/">QoS配置实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/NAT和PPP/">NAT和PPP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/OSPF/">OSPF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/路由重分布和策略路由/">路由重分布和策略路由</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Lvy_Sim.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
+<blockquote>
+<p>新建一个名为 stu1 的用户<br>创建 stu1 的基本组为 stu1<br>创建主目录：/home/stu1</p>
+</blockquote>
+<h4 id="4-2-管理用户登录密码：passwd"><a href="#4-2-管理用户登录密码：passwd" class="headerlink" title="4.2 管理用户登录密码：passwd"></a>4.2 管理用户登录密码：passwd</h4><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-l</td>
+<td>锁定用户密码</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>解锁用户密码</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>查询用户密码状态</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>删除用户密码</td>
+</tr>
+</tbody></table>
+<h4 id="4-3-修改用户属性：usermod"><a href="#4-3-修改用户属性：usermod" class="headerlink" title="4.3 修改用户属性：usermod"></a>4.3 修改用户属性：usermod</h4><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-l</td>
+<td>修改用户名</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>修改用户描述信息</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>修改主目录</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>锁定帐号，临时禁止用户登录</td>
+</tr>
+<tr>
+<td>-U</td>
+<td>对帐号解锁</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>修改用户所属组</td>
+</tr>
+<tr>
+<td>-G</td>
+<td>修改用户附加组</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>修改用户登录的 shell 类型</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>修改用户ID号</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>修改用户有效期</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>修改用户密码在多少天后过期</td>
+</tr>
+</tbody></table>
+<h4 id="4-4-删除用户：userdel"><a href="#4-4-删除用户：userdel" class="headerlink" title="4.4 删除用户：userdel"></a>4.4 删除用户：userdel</h4><p>-r 连同主目录一起删除</p>
+<h4 id="4-5-修改用户口令有效期限：chage"><a href="#4-5-修改用户口令有效期限：chage" class="headerlink" title="4.5 修改用户口令有效期限：chage"></a>4.5 修改用户口令有效期限：chage</h4><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-m</td>
+<td>密码可更改的最小天数。为零时代表任何时候都可以更改密码</td>
+</tr>
+<tr>
+<td>-W</td>
+<td>用户密码到期前，提前收到警告信息的天数</td>
+</tr>
+<tr>
+<td>-M</td>
+<td>密码保持有效的最大天数</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>账号到期的日期。过了这天，此账号将不可用</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>上一次更改的日期</td>
+</tr>
+<tr>
+<td>-I</td>
+<td>停滞时期。如果一个密码已过期这些天，那么此账号将不可用</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>列出当前的设置。由非特权用户来确定他们的密码或账号何时过期</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>例子：设置 jack 用户的密码最大有效期为 30 天，提前 9 天警告，失效时间 40 天。<br>jack:$6$cKy1anL9$Df4uOzkBpovtiIoFVYyawEOqCPCCs3ADtJZKAziZ52JvV9CswHkjsCqOxExKI8WCtMqXNAIO3rlbSFU8353QS0:18143:0:<strong>99999:7:::</strong><br>[root@localhost ~]# chage -M 18054 -W 9 -E 18064 jack<br>jack:$6$cKy1anL9$Df4uOzkBpovtiIoFVYyawEOqCPCCs3ADtJZKAziZ52JvV9CswHkjsCqOxExKI8WCtMqXNAIO3rlbSFU8353QS0:18143:0:<strong>18054（提前30天）:9::18064（失效时间四十天）:</strong></p>
+</blockquote>
+<h2 id="五、用户组管理"><a href="#五、用户组管理" class="headerlink" title="五、用户组管理"></a>五、用户组管理</h2><h4 id="5-1-创建用户组：groupadd"><a href="#5-1-创建用户组：groupadd" class="headerlink" title="5.1 创建用户组：groupadd"></a>5.1 创建用户组：groupadd</h4><h4 id="5-2-修改用户组属性：groupmod"><a href="#5-2-修改用户组属性：groupmod" class="headerlink" title="5.2 修改用户组属性：groupmod"></a>5.2 修改用户组属性：groupmod</h4><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-n</td>
+<td>修改组名</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>修改组标识号GID</td>
+</tr>
+<tr>
+<td>#### 5.3 删除用户组：groupdel</td>
+<td></td>
+</tr>
+<tr>
+<td>#### 5.4 维护组中成员：gpasswd</td>
+<td></td>
+</tr>
+<tr>
+<td>选项</td>
+<td>功能说明</td>
+</tr>
+<tr>
+<td>—-</td>
+<td>——</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>添加用户到组。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>将用户从组中删除。</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>设置用户为组管理员。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>例子：新建 yanyan、yuanyuan、lili 三个用户和 teacher 组将 lili 设置为 teacher 组的管理员，那么 lili 就具有向该组添加用户和移除用户的权限。也可以为该组设置密码，其他用户就可以通过 newgrp 命令切换成该组的成员身份，否则只有本组成员才能使用该组身份。<br>[root@localhost ~]# useradd yanyan<br>[root@localhost ~]# useradd yuanyuan<br>[root@localhost ~]# useradd bobo<br>[root@localhost ~]# groupadd teacher<br>[root@localhost ~]# gpasswd -a bobo teacher<br>正在将用户“bobo”加入到“teacher”组中<br>[root@localhost ~]# gpasswd -A bobo teacher<br>[root@localhost ~]# gpasswd teacher<br>正在修改 teacher 组的密码<br>新密码：<br>请重新输入新密码：<br>[root@localhost ~]# id bobo<br>uid=1017(bobo) gid=1021(bobo) 组=1021(bobo),1022(teacher)<br>[root@localhost ~]# su yanyan<br>[yanyan@localhost root]$ newgrp teacher<br>密码：<br>[yanyan@localhost root]$ id<br>uid=1015(yanyan) gid=1022(teacher) 组=1022(teacher),1019(yanyan) 环境=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023  </p>
+</blockquote>
+<h2 id="六、扩展知识"><a href="#六、扩展知识" class="headerlink" title="六、扩展知识"></a>六、扩展知识</h2><h4 id="6-1-查看用户信息命令：id"><a href="#6-1-查看用户信息命令：id" class="headerlink" title="6.1 查看用户信息命令：id"></a>6.1 查看用户信息命令：id</h4><h4 id="6-2-输出指定用户所在组命令：groups"><a href="#6-2-输出指定用户所在组命令：groups" class="headerlink" title="6.2 输出指定用户所在组命令：groups"></a>6.2 输出指定用户所在组命令：groups</h4><p>#groups stu1  </p>
+<h4 id="6-3-查看当前登录用户命令：who-am-i"><a href="#6-3-查看当前登录用户命令：who-am-i" class="headerlink" title="6.3 查看当前登录用户命令：who am i"></a>6.3 查看当前登录用户命令：who am i</h4><h4 id="6-4-查看当前用户命令：w"><a href="#6-4-查看当前用户命令：w" class="headerlink" title="6.4 查看当前用户命令：w"></a>6.4 查看当前用户命令：w</h4><h4 id="6-5-查看登录用户命令：who"><a href="#6-5-查看登录用户命令：who" class="headerlink" title="6.5 查看登录用户命令：who"></a>6.5 查看登录用户命令：who</h4><h4 id="6-6-查看登录用户历史命令：last"><a href="#6-6-查看登录用户历史命令：last" class="headerlink" title="6.6 查看登录用户历史命令：last"></a>6.6 查看登录用户历史命令：last</h4></div><div class="post-copyright"><blockquote><p>原文作者: Lvy_Sim</p><p>原文链接: <a href="http://yoursite.com/2019/09/04/用户与组的管理/">http://yoursite.com/2019/09/04/用户与组的管理/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/09/03/Linux系统管理基本操作/" class="next">Linux系统管理基本操作</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、用户与用户组概念"><span class="toc-text">一、用户与用户组概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、用户配置文件"><span class="toc-text">二、用户配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-用户配置文件：-etc-passwd"><span class="toc-text">2.1 用户配置文件：/etc/passwd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-用户密码配置文件：-etc-shadow"><span class="toc-text">2.2 用户密码配置文件：/etc/shadow</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#三、用户组配置文件"><span class="toc-text">三、用户组配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-用户组配置文件-etc-group"><span class="toc-text">3.1 用户组配置文件/etc/group</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-用户组密码配置文件-etc-gshadow"><span class="toc-text">3.2 用户组密码配置文件/etc/gshadow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、用户管理"><span class="toc-text">四、用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-创建用户：useradd"><span class="toc-text">4.1 创建用户：useradd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-管理用户登录密码：passwd"><span class="toc-text">4.2 管理用户登录密码：passwd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-修改用户属性：usermod"><span class="toc-text">4.3 修改用户属性：usermod</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-删除用户：userdel"><span class="toc-text">4.4 删除用户：userdel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-修改用户口令有效期限：chage"><span class="toc-text">4.5 修改用户口令有效期限：chage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、用户组管理"><span class="toc-text">五、用户组管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-创建用户组：groupadd"><span class="toc-text">5.1 创建用户组：groupadd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-修改用户组属性：groupmod"><span class="toc-text">5.2 修改用户组属性：groupmod</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、扩展知识"><span class="toc-text">六、扩展知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-查看用户信息命令：id"><span class="toc-text">6.1 查看用户信息命令：id</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-输出指定用户所在组命令：groups"><span class="toc-text">6.2 输出指定用户所在组命令：groups</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-查看当前登录用户命令：who-am-i"><span class="toc-text">6.3 查看当前登录用户命令：who am i</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-4-查看当前用户命令：w"><span class="toc-text">6.4 查看当前用户命令：w</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-5-查看登录用户命令：who"><span class="toc-text">6.5 查看登录用户命令：who</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-6-查看登录用户历史命令：last"><span class="toc-text">6.6 查看登录用户历史命令：last</span></a></li></ol></li></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/用户与组的管理/">用户与组的管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/Linux系统管理基本操作/">Linux系统管理基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/EIGRP/">EIGRP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/安全设备和防火墙设置/">安全设备和防火墙设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/VPN_GRE和PPTP/">VPN_GRE和PPTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/QoS配置实例/">QoS配置实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/NAT和PPP/">NAT和PPP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/OSPF/">OSPF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/路由重分布和策略路由/">路由重分布和策略路由</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Lvy_Sim.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>

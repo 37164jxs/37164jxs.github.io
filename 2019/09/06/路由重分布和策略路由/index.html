@@ -39,42 +39,19 @@
 </ul>
 <p><img src="https://s2.ax1x.com/2019/09/06/nuHJSS.png" alt></p>
 <blockquote>
-<p>1）R1中的配置</p>
+<p>1）R1中的配置  </p>
 <ul>
-<li><p>配置静态ip</p>
-<p>R1(config)#int loopback 0</p>
-<p>R1(config-if)#ip add 1.1.1.1 255.255.255.0</p>
-<p>R1(config)#ip route 0.0.0.0 0.0.0.0 loopback 0</p>
+<li><p>配置静态ip<br>R1(config)#int loopback 0<br>R1(config-if)#ip add 1.1.1.1 255.255.255.0<br>R1(config)#ip route 0.0.0.0 0.0.0.0 loopback 0  </p>
 </li>
-<li><p>静态重新分配分到rip：</p>
-<p>R1(config)#router rip</p>
-<p>R1(config-router)#redistribute static metric 1</p>
+<li><p>静态重新分配分到rip：<br>R1(config)#router rip<br>R1(config-router)#redistribute static metric 1<br><img src="https://s2.ax1x.com/2019/09/06/nuHcy4.png" alt="img"><br>2）R2中的配置  </p>
 </li>
-</ul>
-<p><img src="https://s2.ax1x.com/2019/09/06/nuHcy4.png" alt="img"></p>
-<p>2）R2中的配置</p>
-<ul>
-<li><p>rip重新分配到eigrp：</p>
-<p>R2(config)#router eigrp 10</p>
-<p>R2(config-router)#redistribute rip metric 1000 200 1 1 255</p>
+<li><p>rip重新分配到eigrp：<br>R2(config)#router eigrp 10<br>R2(config-router)#redistribute rip metric 1000 200 1 1 255  </p>
 </li>
-<li><p>eigrp重新分配到rip：</p>
-<p>R2(config)#router rip</p>
-<p>R2(config-router)#redistribute eigrp 10 metric 2</p>
+<li><p>eigrp重新分配到rip：<br>R2(config)#router rip<br>R2(config-router)#redistribute eigrp 10 metric 2<br><img src="https://s2.ax1x.com/2019/09/06/nuHWwR.png" alt="img"><br>3）R3中的配置  </p>
 </li>
-</ul>
-<p><img src="https://s2.ax1x.com/2019/09/06/nuHWwR.png" alt="img"></p>
-<p>3）R3中的配置</p>
-<ul>
-<li><p>eigrp重新分配到ospf：</p>
-<p>R3(config)#router eigrp 10</p>
-<p>R3(config-router)#redistribute ospf 1 metric 1000 100 255 1 1500</p>
-<p>R3(config-router)#distance eigrp 90 150 //配置默认管理距离</p>
+<li><p>eigrp重新分配到ospf：<br>R3(config)#router eigrp 10<br>R3(config-router)#redistribute ospf 1 metric 1000 100 255 1 1500<br>R3(config-router)#distance eigrp 90 150 //配置默认管理距离  </p>
 </li>
-<li><p>ospf重新分配到eigrp：</p>
-<p>R3(config)#router ospf 1</p>
-<p>R3(config-router)#redistribute eigrp 10 metric 1 subnets</p>
-<p>R3(config-router)#redistribute maximum-prefix 100 50 //重分布 ospf的最大路由条目数，超过会提示</p>
+<li><p>ospf重新分配到eigrp：<br>R3(config)#router ospf 1<br>R3(config-router)#redistribute eigrp 10 metric 1 subnets<br>R3(config-router)#redistribute maximum-prefix 100 50 //重分布 ospf的最大路由条目数，超过会提示</p>
 </li>
 </ul>
 </blockquote>

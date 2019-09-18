@@ -33,34 +33,28 @@
 <blockquote>
 <p>\ # echo $Prouduct4.5<br>\ # echo ${Product}4.5</p>
 </blockquote>
-<h6 id="1-2-变量赋值的特殊操作"><a href="#1-2-变量赋值的特殊操作" class="headerlink" title="1.2 变量赋值的特殊操作"></a>1.2 变量赋值的特殊操作</h6><ul>
-<li><strong>(a)双引号(””)</strong><br>双引号主要起界定字符串的作用，特别是当要赋值的内容包含空格时，必须以双引号括起来；其他情况下双引号通常可以省略。<br>举例：变量值包含空格的正确赋值方法  <blockquote>
+<h6 id="1-2-变量赋值的特殊操作"><a href="#1-2-变量赋值的特殊操作" class="headerlink" title="1.2 变量赋值的特殊操作"></a>1.2 变量赋值的特殊操作</h6><p><strong>(a)双引号(””)</strong><br>双引号主要起界定字符串的作用，特别是当要赋值的内容包含空格时，必须以双引号括起来；其他情况下双引号通常可以省略。<br>举例：变量值包含空格的正确赋值方法  </p>
+<blockquote>
 <p># Weixin=weixin 4.5<br>bash: 4.5: 未找到命令…<br># Weixin=”weixin 4.5”  </p>
 </blockquote>
-</li>
-</ul>
 <p>在双引号范围内，使用$符号可以引用其他变量的值（变量引用）。</p>
 <blockquote>
 <p># Version=8.0<br># QQ=”QQ$Version”<br># echo $QQ<br>QQ8.0</p>
 </blockquote>
-<ul>
-<li><strong>(b)单引号(’’)</strong><br>当要赋值的内容包含$ “ \等具有特殊含义的字符时，应使用单引号括起来。在单引号的范围内，将无法引用其他变量的值，任何字符均作为普通字符看待。但赋值内容中包含单引号时，需要使用\进行转义，以免冲突。<br>举例：使用单引号对变量赋值  <blockquote>
+<p><strong>(b)单引号(’’)</strong><br>当要赋值的内容包含$ “ \等具有特殊含义的字符时，应使用单引号括起来。在单引号的范围内，将无法引用其他变量的值，任何字符均作为普通字符看待。但赋值内容中包含单引号时，需要使用\进行转义，以免冲突。<br>举例：使用单引号对变量赋值  </p>
+<blockquote>
 <p># A=’ABC$Version’<br># echo $A<br>ABC$Version  </p>
 </blockquote>
-</li>
-</ul>
 <blockquote>
 <p># AA=’AA’&#39;$Version&#39;<br># echo $AA<br>AA’6.0’  </p>
 </blockquote>
 <blockquote>
 <p># AA=AA&#39;‘$Version’&#39;<br># echo $AA<br>AA’$Version’  </p>
 </blockquote>
-<ul>
-<li><strong>(c)反撇号（`）</strong><br>主要用于命令替换，允许执行某个命令的屏幕输出结果赋值给变量。反撇号括起来的范围内必须是能够执行的命令行，否则会出错。<br>举例：在一行命令中查找tar命令程序的位置并列出其详细属性。  <blockquote>
+<p><strong>(c)反撇号（`）</strong><br>主要用于命令替换，允许执行某个命令的屏幕输出结果赋值给变量。反撇号括起来的范围内必须是能够执行的命令行，否则会出错。<br>举例：在一行命令中查找tar命令程序的位置并列出其详细属性。  </p>
+<blockquote>
 <p># ls -lh `which tar`<br>-rwxr-xr-x. 1 root root 339K 10月 31 2018 /usr/bin/tar</p>
 </blockquote>
-</li>
-</ul>
 <p>举例：提取vsftpd服务的封禁用户列表，并将其赋值给变量Denylist</p>
 <blockquote>
 <p># Denylist=`grep -v “^#” /etc/vsftpd/ftpusers`<br># echo $Denylist<br>root bin daemon adm lp sync shutdown halt mail news uucp operator games nobody  </p>
@@ -69,12 +63,10 @@
 <blockquote>
 <p># rpm -qc $(rpm -qf $(which useradd))<br>/etc/default/useradd<br>/etc/login.defs</p>
 </blockquote>
-<ul>
-<li><strong>(d)read命令</strong><br>read命令用来提示用户输入信息，从而实现简单的交互过程。执行时将从标准输入设备读入一行内容，并以空格为分隔符，将读入的各字段挨个赋值给指定的变量（多余的内容赋值给最后一个变量）。若指定的变量只有一个，则将整行内容赋值给此变量。<br>举例：使用read命令给变量赋值  <blockquote>
+<p><strong>(d)read命令</strong><br>read命令用来提示用户输入信息，从而实现简单的交互过程。执行时将从标准输入设备读入一行内容，并以空格为分隔符，将读入的各字段挨个赋值给指定的变量（多余的内容赋值给最后一个变量）。若指定的变量只有一个，则将整行内容赋值给此变量。<br>举例：使用read命令给变量赋值  </p>
+<blockquote>
 <p># read ToDir1<br>/opt/backup<br># echo $ToDir1<br>/opt/backup  </p>
 </blockquote>
-</li>
-</ul>
 <p>为了使用交互式操作的界面更加友好，提高易用性，read命令可以结合-p和-t选项来设置提示信息和输入等待时间（单位默认为秒）</p>
 <blockquote>
 <p># read -p “please input directory:” -t 3 AA<br>please input directory:/mnt/bak<br># echo $AA<br>/mnt/bak  </p>
@@ -85,7 +77,14 @@
 <p>#export weixin Version<br># bash<br># echo “$weixin $Version”<br>weixin 6.0  </p>
 </blockquote>
 <p>使用export导出全局变量的同时，也可以为变量进行赋值。</p>
-<h6 id="1-4-数值变量的运算"><a href="#1-4-数值变量的运算" class="headerlink" title="1.4 数值变量的运算"></a>1.4 数值变量的运算</h6><p>shell变量的数值运算多用于脚本程序的过程控制（如循环次数、使用量比较等）。在Bash Shell环境中，只能进行简单的整数运算，不支持小数运算。<br>整数值的运算主要通过expr进行，基本格式如下：<br>expr 变量1 运算符 变量2 [运算符 变量3]…<br>其中，变量对应需要计算的数值变量（需要以”$”符号调用），常用的几种运算符如下：<br>|运算符    |意义|<br>|——|—–|<br>|++  –    |增加及减少，可前置也可放到结尾|<br>|*  /  %    |乘法、除法、取余|<br>|+  -    |加法、减法|<br>|&lt;  &lt;=  &gt;  &gt;=    |比较符号|<br>|== !=    |等于与不等于|<br>|&amp;    |位的与|<br>|^    |位的异或|<br>||    |位的或|<br>|&amp;&amp;    |逻辑的与|<br>|||    |逻辑的或|<br>|?:    |条件表达式|<br>|= += -= *= /= %= &amp;= ^= &lt;&lt;=  &gt;&gt;=  |=    |赋值运算符a+=相当于a=a+1|<br><strong>使用expr进行计算的时候，运算符之间有空隔,变量必须是整数，不能是字符串，也不能含小数，否则会出错。</strong><br>除了expr命令外，变量数值常见的命令还包括：<strong>（（））、let等</strong>。如果要执行简单的整数运算，只需要将特定对的算术表达式用$(())括起来即可。<br>举例：简单的算术运算</p>
+<h6 id="1-4-数值变量的运算"><a href="#1-4-数值变量的运算" class="headerlink" title="1.4 数值变量的运算"></a>1.4 数值变量的运算</h6><p>shell变量的数值运算多用于脚本程序的过程控制（如循环次数、使用量比较等）。在Bash Shell环境中，只能进行简单的整数运算，不支持小数运算。<br>整数值的运算主要通过expr进行，基本格式如下：<br>expr 变量1 运算符 变量2 [运算符 变量3]…<br>其中，变量对应需要计算的数值变量（需要以”$”符号调用），常用的几种运算符如下：<br>++  –    &ensp;&ensp;增加及减少，可前置也可放到结尾<br>*  /  %    &ensp;&ensp;乘法、除法、取余  </p>
+<ul>
+<li><ul>
+<li>&ensp;&ensp;加法、减法<br>&lt;  &lt;=  &gt;  &gt;=    &ensp;&ensp;比较符号<br>== !=    &ensp;&ensp;等于与不等于<br>&amp;    &ensp;&ensp;位的与<br>^    &ensp;&ensp;位的异或<br>|    &ensp;&ensp;位的或<br>&amp;&amp;    &ensp;&ensp;逻辑的与<br>||    &ensp;&ensp;逻辑的或<br>?:    &ensp;&ensp;条件表达式<br>= += -= *= /= %= &amp;= ^= &lt;&lt;=  &gt;&gt;=  |=    赋值运算符a+=相当于a=a+1</li>
+</ul>
+</li>
+</ul>
+<p><strong>使用expr进行计算的时候，运算符之间有空隔,变量必须是整数，不能是字符串，也不能含小数，否则会出错。</strong><br>除了expr命令外，变量数值常见的命令还包括：<strong>（（））、let等</strong>。如果要执行简单的整数运算，只需要将特定对的算术表达式用$(())括起来即可。<br>举例：简单的算术运算</p>
 <blockquote>
 <p>#bb=$((1+2**3-4)) //2的三次方<br>#echo$((1+2**3-4))</p>
 </blockquote>

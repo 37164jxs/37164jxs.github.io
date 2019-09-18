@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><link rel="stylesheet" type="text/css" href="//fonts.loli.net/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.4"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.4"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><title>shell脚本基础 | 隔壁抄手店</title></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">shell脚本基础</h1><a id="logo" href="/.">隔壁抄手店</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">shell脚本基础</h1><div class="post-meta"><a href="/2019/09/18/shell基础/#comments" class="comment-count"></a><p><span class="date">Sep 18, 2019</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h2 id="一、shell脚本编程规范"><a href="#一、shell脚本编程规范" class="headerlink" title="一、shell脚本编程规范"></a>一、shell脚本编程规范</h2><h4 id="1、shell脚本应用场景"><a href="#1、shell脚本应用场景" class="headerlink" title="1、shell脚本应用场景"></a>1、shell脚本应用场景</h4><p>&ensp;&ensp;Shell（shell scrip）脚本就是将要执行的命令按顺序保存到一个文件文件，并给该文件可执行权限，方便一次性执行的一个程序文件。主要是方便管理员进行设置或管理，可结合各种shell控制语句以完成更复杂的操作。常用于重复性操作、批量事务处理、自动化运维、服务运行状态监控、定时任务执行等。</p>
+<h4 id="2、shell编程规范"><a href="#2、shell编程规范" class="headerlink" title="2、shell编程规范"></a>2、shell编程规范</h4><p>&ensp;&ensp;Linux系统中的shell脚本是一个特殊的应用程序，它介于 操作系统内核与用户之间，充当一个“命令解释器”的角色，负责接收用户输入的操作指令并进行解释，将需要执行的操作传递给内核执行，并输出执行结果。<br>常用的脚本类型：<br>[root@localhost test]# cat /etc/shells<br>/bin/sh<br>/bin/bash<br>/usr/bin/sh<br>/usr/bin/bash<br>/bin/tcsh<br>/bin/csh </p>
+<ul>
+<li>其中，<strong>/bin/bash</strong>是目前大多数Linux版本采用的默认shell脚本。Bash的全称为Bourne Agin Shell，是最受欢迎的开源软件之一。  </li>
+<li><strong>#!/bin/bash</strong>是一行特殊的脚本声明，表示此行以后的语句通过/bin/bash程序来解释执行</li>
+<li>shell脚本执行方式  <blockquote>
+<p># source first.sh<br># sh first.sh<br># bash first.sh<br># ./first.sh  </p>
+</blockquote>
+</li>
+</ul>
+<h4 id="3、管道和重定向"><a href="#3、管道和重定向" class="headerlink" title="3、管道和重定向"></a>3、管道和重定向</h4><h6 id="3-1-管道操作"><a href="#3-1-管道操作" class="headerlink" title="3.1 管道操作"></a>3.1 管道操作</h6><p>&ensp;&ensp;管道操作为不同命令之间的协同工作提供了一种机制，位于管道符号”|”左边的命令输出的结果，将作为右侧命令的输入（处理对象），同一行命令中可以使用多个管道。管道命令的基本使用格式如下所示：<br>    <code>cmd1 命令1 ｜  cmd2 命令2  [... | cmdn 命令n]</code></p>
+<ul>
+<li><strong>grep：</strong>使用<strong>grep</strong> 命令查询时，会输出符合条件的整行内容，在此基础上可以结合管道操作与<strong>awk</strong> 命令做进一步过滤。<br>正则表达式：  </li>
+</ul>
+<p><strong>^</strong>以什么开头<br><strong>$</strong>以什么结尾  </p>
+<ul>
+<li>grep “/bin/bash$” /etc/passwd | <strong>awk -F: ‘{print $1,$7}’</strong><br>awk：后边用’{print $n}’表示打印第几列（是单引号）  </li>
+<li>F：指定选定的内容以什么方式分隔（默认为空格）</li>
+</ul>
+<h6 id="3-2-重定向操作"><a href="#3-2-重定向操作" class="headerlink" title="3.2 重定向操作"></a>3.2 重定向操作</h6><p>&ensp;&ensp;Linux系统使用文件来描述各种硬件、设备等资源，如以前尝过的硬盘和分区、光盘等设备文件。用户通过操作系统处理信息的过程中，包括以下几类交互设备文件。<br>&ensp;&ensp;标准输入（STDIN）：默认的设备是键盘，文件编号为0，命令将从标准输入文件中读取在执行过程中需要的输入的数据。<br>&ensp;&ensp;标准输出（STDOUT）：默认的设备是显示器，文件编号为1，命令将执行后的输出结果发送到标准输出文件。<br>&ensp;&ensp;标准错误（STDERR）：默认的设备是显示器，文件编号为2，命令执行期间的各种错误信息发送到标准错误文件。</p>
+<ul>
+<li>重定向输入：将命令中接收输入的路径由默认的键盘改为指定的文件，使用<strong>”&lt;”</strong>操作符。  </li>
+<li>重定向输出:将命令的正常输出结果保存到指定的文件，使用<strong>”&gt;”或”&gt;&gt;”</strong>操作符。</li>
+<li>错误重定向：将执行命令过程中出现的错误保存到指定文件，使用<strong>”2&gt;”</strong>操作符。</li>
+</ul>
+<h2 id="二、shell脚本变量"><a href="#二、shell脚本变量" class="headerlink" title="二、shell脚本变量"></a>二、shell脚本变量</h2><p>&ensp;&ensp;Shell变量用来存放系统和用户需要使用的特定参数（值），而且这些参数可以根据用户的设定或系统环境的变化而相应变化。通过使用变量，shell程序能够提供更加灵活的功能，适应性更强。<br>&ensp;&ensp;常见shell变量的类型包括自定义变量、环境变量、位置变量、预定义变量。  </p>
+<h4 id="1、定义新变量"><a href="#1、定义新变量" class="headerlink" title="1、定义新变量"></a>1、定义新变量</h4><p>格式：变量名=变量值<br>注意：等号两边没有空格。变量名称需以字母或下划线开头，名称中不要包含特殊字符（+ - * / . ? % &amp; #）等  </p>
+<h6 id="1-1-查看和应用变量的值"><a href="#1-1-查看和应用变量的值" class="headerlink" title="1.1 查看和应用变量的值"></a>1.1 查看和应用变量的值</h6><p>引用变量值：在变量名称前添加”$”<br>查看变量值：使用echo命令，可以在一条echo命令同时查看多个变量值。  </p>
+<blockquote>
+<p># echo $Product<br># echo $Product$Version  </p>
+</blockquote>
+<p>当变量名称容易和紧跟其后其他字符相混淆时，需要添加”<strong>｛｝</strong>”将其括起来，否则将无法确定正确的变量名称。对未定义的变量，将显示空值。</p>
+<blockquote>
+<p>\ # echo $Prouduct4.5<br>\ # echo ${Product}4.5</p>
+</blockquote>
+<h6 id="1-2-变量赋值的特殊操作"><a href="#1-2-变量赋值的特殊操作" class="headerlink" title="1.2 变量赋值的特殊操作"></a>1.2 变量赋值的特殊操作</h6><ul>
+<li><strong>(a)双引号(””)</strong><br>双引号主要起界定字符串的作用，特别是当要赋值的内容包含空格时，必须以双引号括起来；其他情况下双引号通常可以省略。<br>举例：变量值包含空格的正确赋值方法  <blockquote>
+<p># Weixin=weixin 4.5<br>bash: 4.5: 未找到命令…<br># Weixin=”weixin 4.5”  </p>
+</blockquote>
+</li>
+</ul>
+<p>在双引号范围内，使用$符号可以引用其他变量的值（变量引用）。</p>
+<blockquote>
+<p># Version=8.0<br># QQ=”QQ$Version”<br># echo $QQ<br>QQ8.0</p>
+</blockquote>
+<ul>
+<li><strong>(b)单引号(’’)</strong><br>当要赋值的内容包含$ “ \等具有特殊含义的字符时，应使用单引号括起来。在单引号的范围内，将无法引用其他变量的值，任何字符均作为普通字符看待。但赋值内容中包含单引号时，需要使用\进行转义，以免冲突。<br>举例：使用单引号对变量赋值  <blockquote>
+<p># A=’ABC$Version’<br># echo $A<br>ABC$Version  </p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p># AA=’AA’&#39;$Version&#39;<br># echo $AA<br>AA’6.0’  </p>
+</blockquote>
+<blockquote>
+<p># AA=AA&#39;‘$Version’&#39;<br># echo $AA<br>AA’$Version’  </p>
+</blockquote>
+<ul>
+<li><strong>(c)反撇号（`）</strong><br>主要用于命令替换，允许执行某个命令的屏幕输出结果赋值给变量。反撇号括起来的范围内必须是能够执行的命令行，否则会出错。<br>举例：在一行命令中查找tar命令程序的位置并列出其详细属性。  <blockquote>
+<p># ls -lh `which tar`<br>-rwxr-xr-x. 1 root root 339K 10月 31 2018 /usr/bin/tar</p>
+</blockquote>
+</li>
+</ul>
+<p>举例：提取vsftpd服务的封禁用户列表，并将其赋值给变量Denylist</p>
+<blockquote>
+<p># Denylist=`grep -v “^#” /etc/vsftpd/ftpusers`<br># echo $Denylist<br>root bin daemon adm lp sync shutdown halt mail news uucp operator games nobody  </p>
+</blockquote>
+<p>注意：使用反撇号难以在一行命令中实现嵌套命令替换操作，这时可以使用$()来代替反撇号操作，以解决嵌套的问题。<br>举例：查询提供useradd命令程序的软件包所安装的配置文件位置</p>
+<blockquote>
+<p># rpm -qc $(rpm -qf $(which useradd))<br>/etc/default/useradd<br>/etc/login.defs</p>
+</blockquote>
+<ul>
+<li><strong>(d)read命令</strong><br>read命令用来提示用户输入信息，从而实现简单的交互过程。执行时将从标准输入设备读入一行内容，并以空格为分隔符，将读入的各字段挨个赋值给指定的变量（多余的内容赋值给最后一个变量）。若指定的变量只有一个，则将整行内容赋值给此变量。<br>举例：使用read命令给变量赋值  <blockquote>
+<p># read ToDir1<br>/opt/backup<br># echo $ToDir1<br>/opt/backup  </p>
+</blockquote>
+</li>
+</ul>
+<p>为了使用交互式操作的界面更加友好，提高易用性，read命令可以结合-p和-t选项来设置提示信息和输入等待时间（单位默认为秒）</p>
+<blockquote>
+<p># read -p “please input directory:” -t 3 AA<br>please input directory:/mnt/bak<br># echo $AA<br>/mnt/bak  </p>
+</blockquote>
+<h6 id="1-3-设置变量的作用范围"><a href="#1-3-设置变量的作用范围" class="headerlink" title="1.3 设置变量的作用范围"></a>1.3 设置变量的作用范围</h6><p>默认情况下，新定义的变量只在当前的shell环境中有效，因此称为局部变量。当进入子程序或新的子shell环境时，局部变量将无法再使用。  </p>
+<p>为了使用定义的变量在所有的子shell环境中能够继续使用，减少重复设置工作，可以通过内部命令export将指定的变量导出为”全局变量”。可以同时指定多个变量名称作为参数（不需要使用$）,变量名之间以空格分隔。  </p>
+<blockquote>
+<p>#export weixin Version<br># bash<br># echo “$weixin $Version”<br>weixin 6.0  </p>
+</blockquote>
+<p>使用export导出全局变量的同时，也可以为变量进行赋值。</p>
+<h6 id="1-4-数值变量的运算"><a href="#1-4-数值变量的运算" class="headerlink" title="1.4 数值变量的运算"></a>1.4 数值变量的运算</h6><p>shell变量的数值运算多用于脚本程序的过程控制（如循环次数、使用量比较等）。在Bash Shell环境中，只能进行简单的整数运算，不支持小数运算。<br>整数值的运算主要通过expr进行，基本格式如下：<br>expr 变量1 运算符 变量2 [运算符 变量3]…<br>其中，变量对应需要计算的数值变量（需要以”$”符号调用），常用的几种运算符如下：<br>|运算符    |意义|<br>|——|—–|<br>|++  –    |增加及减少，可前置也可放到结尾|<br>|*  /  %    |乘法、除法、取余|<br>|+  -    |加法、减法|<br>|&lt;  &lt;=  &gt;  &gt;=    |比较符号|<br>|== !=    |等于与不等于|<br>|&amp;    |位的与|<br>|^    |位的异或|<br>||    |位的或|<br>|&amp;&amp;    |逻辑的与|<br>|||    |逻辑的或|<br>|?:    |条件表达式|<br>|= += -= *= /= %= &amp;= ^= &lt;&lt;=  &gt;&gt;=  |=    |赋值运算符a+=相当于a=a+1|<br><strong>使用expr进行计算的时候，运算符之间有空隔,变量必须是整数，不能是字符串，也不能含小数，否则会出错。</strong><br>除了expr命令外，变量数值常见的命令还包括：<strong>（（））、let等</strong>。如果要执行简单的整数运算，只需要将特定对的算术表达式用$(())括起来即可。<br>举例：简单的算术运算</p>
+<blockquote>
+<p>#bb=$((1+2**3-4)) //2的三次方<br>#echo$((1+2**3-4))</p>
+</blockquote>
+<h4 id="2、特殊变量"><a href="#2、特殊变量" class="headerlink" title="2、特殊变量"></a>2、特殊变量</h4><h6 id="2-1-环境变量"><a href="#2-1-环境变量" class="headerlink" title="2.1 环境变量"></a>2.1 环境变量</h6><p>环境变量指的是出于运行需要而由Linux系统提前创建的一类变量，主要用于设置用户的工作环境，包括用户主目录、命令查找路径、用户当前目录、登录终端等。环境变量的值由Linux系统自动维护，随用户状态的改变而改变。<br><strong>在Linux系统中，环境变量的全局配置文件为/etc/profile</strong><br>举例：修改历史记录命令条数  </p>
+<blockquote>
+<p># history | wc -l<br># vim /root/.bash_profile<br>export HISTSIZE=50<br># source /root/.bash_profile  //配置重新生效<br># history | wc -l  </p>
+</blockquote>
+<h6 id="2-2-位置变量"><a href="#2-2-位置变量" class="headerlink" title="2.2 位置变量"></a>2.2 位置变量</h6><blockquote>
+<p>#!/bin/bash<br>SUM=<code>expr $1 + $2</code>  //位置变量$后边一定是数字<br>echo “$1 +  $2”= $SUM<br># chmod +x addr2num.sh<br># ./addr2num.sh 15 20<br>15 +  20= 35</p>
+</blockquote>
+<h6 id="2-3-预定义变量"><a href="#2-3-预定义变量" class="headerlink" title="2.3 预定义变量"></a>2.3 预定义变量</h6><p><strong>$# 命令行中位置参数的个数<br>$* 所有位置参数的内容<br>$? 前一条命令执行后的返回状态，返回值为0表示正确执行，返回值为1表示异常<br>$0 当前执行脚本的文件名称</strong>  </p>
+<blockquote>
+<p>#vim mybak.sh<br>#!/bin/bash<br>TARFILE=beifen-`date +%s`.tgz<br>tar zcf $TARFILE $* &amp;&gt;/dev/null<br>echo “已执行$0脚本”<br>echo “共完成$#个对象的备份”<br>echo “具体内容包括：$*“<br>chmod +x mybak.sh<br># ./mybak.sh /boot/grub<br>已执行./mybak.sh脚本<br>共完成1个对象的备份<br>具体内容包括：/boot/grub  </p>
+</blockquote>
+</div><div class="post-copyright"><blockquote><p>原文作者: Lvy_Sim</p><p>原文链接: <a href="http://yoursite.com/2019/09/18/shell基础/">http://yoursite.com/2019/09/18/shell基础/</a></p><p>版权声明: 转载请注明出处(必须保留作者署名及链接)</p></blockquote></div><div class="tags"></div><div class="post-share"><div class="social-share"><span>分享到:</span></div></div><div class="post-nav"><a href="/2019/09/06/路由重分布和策略路由/" class="next">路由重分布和策略路由</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、shell脚本编程规范"><span class="toc-text">一、shell脚本编程规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、shell脚本应用场景"><span class="toc-text">1、shell脚本应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、shell编程规范"><span class="toc-text">2、shell编程规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、管道和重定向"><span class="toc-text">3、管道和重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-1-管道操作"><span class="toc-text">3.1 管道操作</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-2-重定向操作"><span class="toc-text">3.2 重定向操作</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#二、shell脚本变量"><span class="toc-text">二、shell脚本变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、定义新变量"><span class="toc-text">1、定义新变量</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-1-查看和应用变量的值"><span class="toc-text">1.1 查看和应用变量的值</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-2-变量赋值的特殊操作"><span class="toc-text">1.2 变量赋值的特殊操作</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-3-设置变量的作用范围"><span class="toc-text">1.3 设置变量的作用范围</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-4-数值变量的运算"><span class="toc-text">1.4 数值变量的运算</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、特殊变量"><span class="toc-text">2、特殊变量</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#2-1-环境变量"><span class="toc-text">2.1 环境变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-2-位置变量"><span class="toc-text">2.2 位置变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-3-预定义变量"><span class="toc-text">2.3 预定义变量</span></a></li></ol></li></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/shell基础/">shell脚本基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/06/路由重分布和策略路由/">路由重分布和策略路由</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/06/VLAN概述/">telnet概述</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/05/quota磁盘配额管理/">quota磁盘配额管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/链接文件+别名+sudo/">链接文件+别名+sudo</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/04/用户与组的管理/">用户与组的管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/03/Linux系统管理基本操作/">Linux系统管理基本操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/EIGRP/">EIGRP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/安全设备和防火墙设置/">安全设备和防火墙设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/28/VPN_GRE和PPTP/">VPN_GRE和PPTP</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">网站地图</a> |  <a href="/atom.xml">订阅本站</a> |  <a href="/about/">联系博主</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次，本站总访客数:<i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>人</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Lvy_Sim.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.4"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.4" async></script><link rel="stylesheet" type="text/css" href="/share/css/share.css"><script type="text/javascript" src="/share/js/social-share.js" charset="utf-8"></script><script type="text/javascript" src="/share/js/qrcode.js" charset="utf-8"></script></body></html>
